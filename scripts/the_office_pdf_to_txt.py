@@ -3,8 +3,8 @@ from PyPDF2 import PdfReader
 import re
 
 # global variables
-mode = "append"  # append
-pdf_file = "/home/samir/Documents/data/the_office/the-office-101-pilot-2005.pdf"
+mode = "write"  # "write" or "append"
+pdf_file = "/home/samir/Documents/data/the_office/1-TheOfficeSample-theMasseuse.pdf"
 write_txt_file = "the_office/test_script.txt"
 append_txt_file = "the_office/test_script.txt"
 
@@ -20,11 +20,12 @@ else:
 # Page numbers added to the delete set
 delete_set = []
 for i in range(100, 0, -1):
-    number = str(i) + "\."
+    number = str(i)  # + "\."
     delete_set.append(number)
-print(delete_set)
+# print(delete_set)
 # Add a line before these words/characters
 new_line_before_set = {
+    "MICHAEL",
     "SCOTT",
     "PAM",
     "JIM",
@@ -46,8 +47,18 @@ new_line_before_set = {
     "GABE",
     "DARRYL",
     "ROY",
+    "MARCI",
+    "DONNA",
+    "EMMA",
+    "TODD",
+    "FLASHBACK",
     "SCENE",
+    "REVERSE ANGLE",
+    "BACK TO PRESENT",
     "The End.",
+    "THE END",
+    "INT.",
+    "END TEASER",
 }
 
 # creating a pdf reader object
@@ -55,6 +66,7 @@ reader = PdfReader(pdf_file)
 
 # find number of pages
 num_pages = len(reader.pages)
+print(f"{num_pages} pages")
 
 # write to txt file
 if mode == "write":
@@ -73,11 +85,13 @@ for i in range(num_pages):
 
     # delete page numbers
     for word in delete_set:
+        line_add = ""
+        n = len(line_add)
         for m in re.finditer(word, text):
             print(
-                f"Page {i} found word {text[m.start():m.end()+1]} starting {m.start()} and ending {m.end()}"
+                f"Page {i} found word {text[m.start():m.end()+n]} starting {m.start()} and ending {m.end()}"
             )
-            text = text[: m.start()] + "\n\n" + text[m.end() + 2 :]
+            text = text[: m.start()] + line_add + text[m.end() + n :]
 
     # adding a line before certain word
     for word in new_line_before_set:

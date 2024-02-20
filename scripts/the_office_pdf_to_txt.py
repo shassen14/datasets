@@ -4,7 +4,9 @@ import re
 
 # global variables
 mode = "write"  # "write" or "append"
-pdf_file = "/home/samir/Documents/data/the_office/1-TheOfficeSample-theMasseuse.pdf"
+pdf_file = (
+    "/home/samir/Documents/data/the_office/fan_fiction/Episode_1_â___Arrivals.pdf"
+)
 write_txt_file = "the_office/test_script.txt"
 append_txt_file = "the_office/test_script.txt"
 
@@ -22,6 +24,9 @@ delete_set = []
 for i in range(100, 0, -1):
     number = str(i)  # + "\."
     delete_set.append(number)
+
+delete_set.append("theofficefanfic.com")
+
 # print(delete_set)
 # Add a line before these words/characters
 new_line_before_set = {

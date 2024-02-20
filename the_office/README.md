@@ -10,4 +10,4 @@ DO NOT USE THIS ONE (dataset too small). Screenplays that I found from random pd
 
 ## test_script.txt
 
-Just a sample text that gets produced from [the_offic_pdf_to_txt.py](../scripts/the_office_pdf_to_txt.py). Whatever sample text I worked with gets produced here.
+Just a sample text that gets produced from [the_office_pdf_to_txt.py](../scripts/the_office_pdf_to_txt.py). Whatever sample text I worked with gets produced here.
